@@ -21,18 +21,16 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
+      retry: 3, // Retry failed queries up to 3 times
+      refetchOnReconnect: true, // Refetches
     },
   },
 });
 dayjs.locale("kz", kazakhLocale);
 
 function App() {
-  const { i18n, t } = useTranslation();
+  const { i18n } = useTranslation();
   dayjs.locale(i18next.language);
-
-  useEffect(() => {
-    document.title = t("title.log");
-  }, [i18next.language, t]);
 
   useEffect(() => {
     i18n.changeLanguage(

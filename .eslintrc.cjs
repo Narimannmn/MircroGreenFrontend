@@ -10,7 +10,13 @@ module.exports = {
     "@feature-sliced",
     "prettier",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs", "resources.d.ts", "vite.config.ts"],
+  ignorePatterns: [
+    "dist",
+    ".eslintrc.cjs",
+    "resources.d.ts",
+    "vite.config.ts",
+    "src/components/ui",
+  ],
   overrides: [
     {
       env: {
