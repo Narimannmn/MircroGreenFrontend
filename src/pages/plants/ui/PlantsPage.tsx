@@ -1,6 +1,7 @@
-import { AddPlantModal } from "./AddPlantModal/AddPlantModal";
-import { PlantsTable } from "./PlantsTable";
 import { Input } from "@/components/ui/input";
+import { AddPlanByImage } from "./AddPlanByImage/AddPlanByImage";
+import { AddPlantModal } from "./AddPlantModal/AddPlantModal";
+import { PlantsTable } from "./PlantsTable/PlantsTable";
 
 export const PlantsPage = () => {
   return (
@@ -9,9 +10,10 @@ export const PlantsPage = () => {
         <Input
           type='text'
           placeholder='Поиск'
-          className='flex-1 p-4 rounded-2xl  border-2 border-gray-300'
+          className='flex-1 p-4 rounded-md  border-2 border-gray-300'
         />
         <AddPlantModal />
+        <AddPlanByImage />
       </div>
       <PlantsTable />
     </section>

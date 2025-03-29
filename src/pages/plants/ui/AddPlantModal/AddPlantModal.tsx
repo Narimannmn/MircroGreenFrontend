@@ -18,8 +18,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { PlantTypeSelect } from "../PlantTypeSelect/PlantTypeSelect";
 
-// Import the new select component
-
 export const AddPlantModal = () => {
   const { mutate } = useCreatePlant();
   const [open, setOpen] = useState(false);
@@ -47,7 +45,7 @@ export const AddPlantModal = () => {
         onSuccess: () => {
           reset();
           queryClient.refetchQueries({
-            queryKey: ["useGetPlants"],
+            queryKey: ["useGetLots"],
           });
           setOpen(false);
         },
@@ -61,10 +59,11 @@ export const AddPlantModal = () => {
       onOpenChange={setOpen}
     >
       <DialogTrigger asChild>
-        <Button className='w-[200px] p-4 rounded-2xl border-2 border-gray-300 cursor-pointer'>
+        <Button className='w-[200px] p-4 rounded-md border-2 border-gray-300 cursor-pointer'>
           Добавить
         </Button>
       </DialogTrigger>
+
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
           <h2>Add a New Plant</h2>

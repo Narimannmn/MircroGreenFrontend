@@ -5,10 +5,9 @@ import {
 } from "@tanstack/react-table";
 import { useState } from "react";
 import { IconContext } from "react-icons";
-import { BsChevronLeft } from "react-icons/bs";
-import { BsChevronRight } from "react-icons/bs";
-import { useGetPlants } from "@/entities/Plant/hooks/useGetPlants";
-import { columns } from "../data/data";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { useGetLots } from "@/entities/Lot/hooks/useGetLots";
+import { columns } from "../../data/data";
 
 const getCellClassNames = (
   rowIndex: number,
@@ -22,13 +21,12 @@ const getCellClassNames = (
   }
   return "";
 };
-
-export const PlantsTable = () => {
+export const LotsTable = () => {
   const [page, setPage] = useState<number>(1);
-  const { data: plant, isLoading } = useGetPlants({ page, page_size: 3 });
+  const { data: plant, isLoading } = useGetLots({ page, page_size: 3 });
 
   const table = useReactTable({
-    data: plant?.items || [],
+    data: plant?.seedbeds || [],
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -49,7 +47,7 @@ export const PlantsTable = () => {
   }
   return (
     <div className='flex flex-col gap-4'>
-      <table className='w-full border border-gray-300 rounded-2xl shadow-xl overflow-hidden'>
+      <table className='w-full border border-gray-300 rounded-md  overflow-hidden'>
         <thead className='bg-[#F6F6FA] border-b border-gray-300'>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -57,9 +55,9 @@ export const PlantsTable = () => {
                 <th
                   key={header.id}
                   className={`py-4 px-6 text-left border border-gray-300 
-                    ${index === 0 ? "rounded-tl-2xl" : ""} 
-                    ${index === headerGroup.headers.length - 1 ? "rounded-tr-2xl" : ""}
-                  `}
+                      ${index === 0 ? "rounded-tl-md" : ""} 
+                      ${index === headerGroup.headers.length - 1 ? "rounded-tr-md" : ""}
+                    `}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -107,7 +105,7 @@ export const PlantsTable = () => {
             <button
               onClick={prevPage}
               disabled={page === 1}
-              className='px-4 py-2 border rounded-2xl disabled:bg-[#EDEDED] bg-[#262626] text-white flex gap-2 items-center'
+              className='px-4 py-2 border rounded-md disabled:bg-[#EDEDED] bg-[#262626] text-white flex gap-2 items-center'
             >
               <BsChevronLeft />
               Предыдущая
@@ -115,7 +113,7 @@ export const PlantsTable = () => {
             <button
               onClick={nextPage}
               disabled={page == (plant?.page_count || 1)}
-              className='px-4 py-2 border rounded-2xl disabled:bg-[#EDEDED] bg-[#262626] text-white flex gap-2 items-center'
+              className='px-4 py-2 border rounded-md disabled:bg-[#EDEDED] bg-[#262626] text-white flex gap-2 items-center'
             >
               Следующая
               <BsChevronRight />

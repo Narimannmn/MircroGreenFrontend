@@ -1,5 +1,5 @@
 export const privateRoutesMap = {
   lots: "/lots",
-  analytics: "lots/:id/analytics/",
+  analytics: "lots/:id",
   plants: "/plants",
 } as const;

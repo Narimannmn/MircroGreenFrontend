@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import { FaTelegram } from "react-icons/fa";
 import { GiHighGrass } from "react-icons/gi";
 import { PiPottedPlantDuotone } from "react-icons/pi";
 import { privateRoutesMap } from "@/shared/navigation";
@@ -23,16 +24,29 @@ export const sidebarItems: SidebarGroup[] = [
     label: "Основные",
     children: [
       {
+        key: privateRoutesMap.lots,
+        type: "item",
+        label: "Лоты",
+        icon: <GiHighGrass />,
+      },
+      {
         key: privateRoutesMap.plants,
         type: "item",
         label: "Микрозелени",
         icon: <PiPottedPlantDuotone />,
       },
+    ],
+  },
+  {
+    key: "integration",
+    type: "group",
+    label: "Пуш-уведомления",
+    children: [
       {
-        key: privateRoutesMap.lots,
+        key: "/telegram",
         type: "item",
-        label: "Лоты",
-        icon: <GiHighGrass />,
+        label: "Телеграмм",
+        icon: <FaTelegram />,
       },
     ],
   },
