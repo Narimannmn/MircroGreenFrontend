@@ -1,7 +1,7 @@
-import { Input } from "@/components/ui/input";
 import { AddPlanByImage } from "./AddPlanByImage/AddPlanByImage";
 import { AddPlantModal } from "./AddPlantModal/AddPlantModal";
 import { PlantsTable } from "./PlantsTable/PlantsTable";
+import { Input } from "@/components/ui/input";
 
 export const PlantsPage = () => {
   return (

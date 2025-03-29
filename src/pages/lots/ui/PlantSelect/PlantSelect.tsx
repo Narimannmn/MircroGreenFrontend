@@ -31,15 +31,15 @@ export const PlantSelect = ({ name, errors, control }: PlantSelectProps) => {
 
   return (
     <div className='w-full'>
-      <label htmlFor='plant_type'>Plant Type</label>
+      <label htmlFor='plant_type'>Тип растения</label>
       <Controller
         control={control}
         name={name}
         render={({ field }) => (
           <Select
-            {...field} // This binds the field to react-hook-form
+            {...field}
             required
-            value={field.value}
+            value={`${field.value}`}
             onValueChange={(value) => field.onChange(value)}
           >
             <SelectTrigger className='input w-full'>

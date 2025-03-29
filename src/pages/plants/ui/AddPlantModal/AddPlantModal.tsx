@@ -7,6 +7,7 @@ import {
   PlantReadCreate,
   PlantReadCreateSchema,
 } from "@/entities/Plant/shemas/shemas";
+import { PlantTypeSelect } from "../PlantTypeSelect/PlantTypeSelect";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -16,7 +17,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { PlantTypeSelect } from "../PlantTypeSelect/PlantTypeSelect";
 
 export const AddPlantModal = () => {
   const { mutate } = useCreatePlant();
@@ -123,13 +123,19 @@ export const AddPlantModal = () => {
             <button
               type='button'
               onClick={() => setOpen(false)}
-              className='button'
+              className='buttontransition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
             >
               Cancel
             </button>
             <button
               type='submit'
-              className='button'
+              className='button transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
             >
               Submit
             </button>

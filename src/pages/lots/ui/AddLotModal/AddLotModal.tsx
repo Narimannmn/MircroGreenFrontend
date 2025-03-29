@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCreateLot } from "@/entities/Lot/hooks/useCreateLot";
 import { LotCreate, LotCreateSchema } from "@/entities/Lot/schemas/shemas";
+import { PlantSelect } from "../PlantSelect/PlantSelect";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,9 +14,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { PlantSelect } from "../PlantSelect/PlantSelect";
-
-// ✅ import PlantSelect
 
 export const AddLotModal = () => {
   const { mutateAsync } = useCreateLot();
@@ -57,14 +55,19 @@ export const AddLotModal = () => {
       onOpenChange={setOpen}
     >
       <DialogTrigger asChild>
-        <Button className='w-[200px] p-4 rounded-md border-2 border-gray-300 cursor-pointer'>
+        <Button
+          className='w-[200px] p-4 rounded-md border-2 border-gray-300 cursor-pointer transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
+        >
           Добавить
         </Button>
       </DialogTrigger>
 
       <DialogContent className='sm:max-w-[425px]'>
         <DialogHeader>
-          <h2 className='text-lg font-bold mb-4'>Add a New Plant Lot</h2>
+          <h2 className='text-lg font-bold mb-4'>Добавить новую грядку</h2>
         </DialogHeader>
 
         <form
@@ -79,7 +82,7 @@ export const AddLotModal = () => {
           />
 
           <div>
-            <label>Date Planted</label>
+            <label>Дата посадки</label>
             <Input
               type='date'
               {...register("date_planted")}
@@ -90,7 +93,7 @@ export const AddLotModal = () => {
           </div>
 
           <div>
-            <label>Type of Soil</label>
+            <label>Тип почвы</label>
             <Input {...register("type_of_soil")} />
             {errors.type_of_soil && (
               <p className='text-red-500'>{errors.type_of_soil.message}</p>
@@ -98,7 +101,7 @@ export const AddLotModal = () => {
           </div>
 
           <div>
-            <label>Soil Number</label>
+            <label>Количество почвы</label>
             <Input
               type='number'
               {...register("soil_number")}
@@ -109,7 +112,7 @@ export const AddLotModal = () => {
           </div>
 
           <div>
-            <label>Date Harvested</label>
+            <label>Дата сбора</label>
             <Input
               type='date'
               {...register("date_harvested")}
@@ -123,11 +126,23 @@ export const AddLotModal = () => {
             <Button
               type='button'
               variant='ghost'
+              className='transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
               onClick={() => setOpen(false)}
             >
-              Cancel
+              Отмена
             </Button>
-            <Button type='submit'>Submit</Button>
+            <Button
+              type='submit'
+              className='transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
+            >
+              Добавить
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

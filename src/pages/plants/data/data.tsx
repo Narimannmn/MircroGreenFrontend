@@ -8,15 +8,15 @@ export const columns: ColumnDef<Plant>[] = [
     cell: ({ row }) => row.index + 1,
   },
   {
-    header: "Name",
+    header: "Название",
     accessorKey: "name",
   },
   {
-    header: "Description",
+    header: "Описание",
     accessorKey: "description",
   },
   {
-    header: "Actions",
+    header: "Действия",
     cell: ({ row }) => <TableActions id={row.original.id} />,
   },
 ];

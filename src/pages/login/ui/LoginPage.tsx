@@ -113,7 +113,10 @@ export const LoginPage = () => {
             </div>
             <button
               type='submit'
-              className='bg-[#262626] text-white rounded-2xl text-center py-5'
+              className='bg-[#262626] text-white rounded-2xl text-center py-5 transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
             >
               Зарегистрироваться
             </button>

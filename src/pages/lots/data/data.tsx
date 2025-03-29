@@ -7,7 +7,7 @@ export const columns: ColumnDef<Lot>[] = [
     cell: ({ row }) => row.index + 1,
   },
   {
-    header: "Plant Name",
+    header: "Название микрозелени",
     accessorKey: "plant_name",
     cell: ({ row }) => (
       <a
@@ -19,20 +19,20 @@ export const columns: ColumnDef<Lot>[] = [
     ),
   },
   {
-    header: "Date Planted",
+    header: "Дата посадки",
     accessorKey: "date_planted",
     cell: ({ row }) => new Date(row.original.date_planted).toLocaleDateString(),
   },
   {
-    header: "Type of Soil",
+    header: "Тип почвы",
     accessorKey: "type_of_soil",
   },
   {
-    header: "Soil Number",
+    header: "Количество почв",
     accessorKey: "soil_number",
   },
   {
-    header: "Date Harvested",
+    header: "День сбора",
     accessorKey: "date_harvested",
     cell: ({ row }) =>
       new Date(row.original.date_harvested).toLocaleDateString(),

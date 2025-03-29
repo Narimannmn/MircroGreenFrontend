@@ -1,6 +1,6 @@
-import { Input } from "@/components/ui/input";
 import { AddLotModal } from "./AddLotModal/AddLotModal";
 import { LotsTable } from "./LotsTable/LotsTable";
+import { Input } from "@/components/ui/input";
 
 export const LotsPage = () => {
   return (

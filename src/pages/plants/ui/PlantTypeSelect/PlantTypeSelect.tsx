@@ -63,7 +63,7 @@ export const PlantTypeSelect = ({
 
   return (
     <div className='w-full'>
-      <label htmlFor='plant_type'>Plant Type</label>
+      <label htmlFor='plant_type'>Тип зелени</label>
       <Controller
         control={control}
         name={name}
@@ -112,8 +112,12 @@ export const PlantTypeSelect = ({
                 <Button
                   type='button'
                   onClick={handleAddNewPlantType}
+                  className='transition-all duration-300 ease-in-out
+              hover:bg-blue-600 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+              active:bg-blue-700 active:scale-95'
                 >
-                  Add Plant Type
+                  Добавить тип зелени
                 </Button>
               </div>
             </SelectContent>
