@@ -1,6 +1,7 @@
 import { instance } from "@/shared/api/instance";
 import { appLocalStorageKey } from "@/shared/config/appLocalStorage/appLocalStorage";
 import { appLocalStorage } from "@/shared/utils/appLocalStorage/appLocalStorage";
+import { RecordCommentData } from "../hooks/useGetRecordComment";
 import { PaginatedRecords, RecordsBase } from "../schemas/schemas";
 
 export interface GetRecordsParams {
@@ -38,4 +39,14 @@ export const addRecordBySeedbedId = async (
   });
 
   return response.data;
+};
+export const getRecordsComment = (seedbed_id: number | undefined) => {
+  if (!seedbed_id) return;
+  return instance
+    .get<RecordCommentData>(`/record/analytics/${seedbed_id}`, {
+      headers: {
+        Authorization: `Bearer ${appLocalStorage.getItem(appLocalStorageKey.accessToken)}`,
+      },
+    })
+    .then((res) => res.data);
 };

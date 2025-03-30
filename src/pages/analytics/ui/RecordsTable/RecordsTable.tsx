@@ -3,10 +3,12 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IconContext } from "react-icons";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useGetRecordComment } from "@/entities/Journal/hooks/useGetRecordComment";
 import { useGetRecordsById } from "@/entities/Journal/hooks/useGetRecordsById";
 import { columns } from "../../data/data";
 
@@ -25,6 +27,7 @@ const getCellClassNames = (
 export const RecordsTable = () => {
   const [page, setPage] = useState<number>(1);
   const { id } = useParams<{ id: string }>();
+  const { data } = useGetRecordComment(Number(id));
   const { data: records, isLoading } = useGetRecordsById({
     seedbed_id: id,
     page: page,
@@ -48,6 +51,29 @@ export const RecordsTable = () => {
       setPage(page - 1);
     }
   };
+
+  useEffect(() => {
+    if (data) {
+      toast.success(data.message, {
+        position: "bottom-right", // Position it at the bottom-right corner
+        autoClose: 5000, // Stay visible for 5 seconds (adjust as needed)
+        closeOnClick: false, // Don't close when clicked
+        draggable: false, // Disable dragging
+        hideProgressBar: true, // Optionally hide the progress bar
+        style: {
+          width: "400px", // Set width to 400px
+          wordWrap: "break-word", // Ensure the text wraps
+          wordBreak: "break-word", // Break long words
+          whiteSpace: "normal", // Allow multiple lines
+          backgroundColor: "#f4f4f9", // Light background color for a hint feel
+          color: "#333", // Darker text for readability
+          border: "1px solid #ddd", // Light border to give it a soft look
+          borderRadius: "8px", // Rounded corners
+        },
+      });
+    }
+  }, [data]);
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

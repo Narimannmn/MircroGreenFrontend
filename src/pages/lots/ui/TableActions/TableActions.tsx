@@ -1,23 +1,22 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
-import { useDeletePlant } from "@/entities/Plant/hooks/useDeletePlant";
-import { ID } from "@/shared/schemas";
+import { useDeleteLot } from "@/entities/Lot/hooks/useDeleteLot";
 
 export interface TableActionsProps {
-  id: ID;
+  id: number;
 }
 export const TableActions = ({ id }: TableActionsProps) => {
   const queryClient = useQueryClient();
 
-  const { mutateAsync } = useDeletePlant();
-  const handleDelete = (id: string) => {
+  const { mutateAsync } = useDeleteLot();
+  const handleDelete = (id: number) => {
     mutateAsync(id, {
       onSuccess: () => {
         queryClient.refetchQueries({
-          queryKey: ["useGetPlants"],
+          queryKey: ["useGetLots"],
         });
-        toast.success("Вы удалили растение");
+        toast.success("Вы удалили лот");
       },
     });
   };

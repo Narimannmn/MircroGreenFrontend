@@ -1,5 +1,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Lot } from "@/entities/Lot/schemas/shemas";
+import { TableActions } from "../ui/TableActions/TableActions";
 
 export const columns: ColumnDef<Lot>[] = [
   {
@@ -37,8 +38,8 @@ export const columns: ColumnDef<Lot>[] = [
     cell: ({ row }) =>
       new Date(row.original.date_harvested).toLocaleDateString(),
   },
-  // {
-  //   header: "Actions",
-  //   cell: ({ row }) => <TableActions id={row.original.id} />,
-  // },
+  {
+    header: "Actions",
+    cell: ({ row }) => <TableActions id={row.original.id} />,
+  },
 ];

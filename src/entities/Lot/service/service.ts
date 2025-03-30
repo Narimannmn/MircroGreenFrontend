@@ -27,3 +27,12 @@ export const createLot = (lotData: LotCreateRead) => {
     })
     .then((response) => response.data);
 };
+export const deleteLot = (id: number) => {
+  return instance
+    .delete(`/seedbeds/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${appLocalStorage.getItem(appLocalStorageKey.accessToken)}`,
+      },
+    })
+    .then((data) => data.data);
+};

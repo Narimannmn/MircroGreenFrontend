@@ -2,6 +2,7 @@ import { Outlet, RouteObject } from "react-router-dom";
 import { AnalyticsPageLazy } from "@/pages/analytics";
 import { LotsPageLazy } from "@/pages/lots";
 import { PlantsPageLazy } from "@/pages/plants";
+import { TelegramPageLazy } from "@/pages/telegram";
 import { AppSuspense } from "@/shared/components/AppSuspense";
 import { ProtectedRoute } from "@/shared/components/ProtectedRoute/ProtectedRoute";
 import { AppLayout } from "@/shared/layouts/AppLayout/AppLayout";
@@ -30,6 +31,10 @@ export const privateRoutes: RouteObject[] = [
       {
         path: privateRoutesMap.lots,
         element: <LotsPageLazy />,
+      },
+      {
+        path: privateRoutesMap.telegram,
+        element: <TelegramPageLazy />,
       },
     ],
   },
